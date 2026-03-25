@@ -1,0 +1,143 @@
+=========================================
+Testing All Zig Tutorials (001-100)
+=========================================
+
+[1] Testing 001_hello_world.zig ... ✓ PASSED
+[2] Testing 002_variables_and_constants.zig ... ✓ PASSED
+[3] Testing 003_basic_data_types.zig ... ✓ PASSED
+[4] Testing 004_numeric_operations.zig ... ✓ PASSED
+[5] Testing 005_boolean_and_logic.zig ... ✓ PASSED
+[6] Testing 006_characters_and_strings.zig ... ✓ PASSED
+[7] Testing 007_arrays.zig ... ✓ PASSED
+[8] Testing 008_if_statement.zig ... ✓ PASSED
+[9] Testing 009_while_loop.zig ... ✓ PASSED
+[10] Testing 010_for_loop.zig ... ✓ PASSED
+[11] Testing 011_switch_statement.zig ... ✓ PASSED
+[12] Testing 012_functions_basics.zig ... ✓ PASSED
+[13] Testing 013_function_advanced.zig ... ✓ PASSED
+[14] Testing 014_error_handling.zig ... ✗ FAILED
+[15] Testing 015_defer_statement.zig ... ✗ FAILED
+[16] Testing 016_pointers.zig ... ✗ FAILED
+[17] Testing 017_optionals.zig ... ✗ FAILED
+[18] Testing 018_structs.zig ... ✓ PASSED
+[19] Testing 019_enums.zig ... ✗ FAILED
+[20] Testing 020_unions.zig ... ✗ FAILED
+[21] Testing 021_slices.zig ... ✗ FAILED
+[22] Testing 022_while_advanced.zig ... ✓ PASSED
+[23] Testing 023_for_advanced.zig ... ✓ PASSED
+[24] Testing 024_functions_more.zig ... ✓ PASSED
+[25] Testing 025_comptime.zig ... ✓ PASSED
+[26] Testing 026_memory_allocation.zig ... ✓ PASSED
+[27] Testing 027_arraylist.zig ... ✗ FAILED
+[28] Testing 028_hashmap.zig ... ✗ FAILED
+[29] Testing 029_string_processing.zig ... ✓ PASSED
+[30] Testing 030_file_io.zig ... ✓ PASSED
+[31] Testing 031_error_handling_advanced.zig ... ✓ PASSED
+[32] Testing 032_try_catch.zig ... ✓ PASSED
+[33] Testing 033_error_union.zig ... ✓ PASSED
+[34] Testing 034_anytype.zig ... ✗ FAILED
+[35] Testing 035_comptime_advanced.zig ... ✓ PASSED
+[36] Testing 036_inline_loop.zig ... ✓ PASSED
+[37] Testing 037_type_info.zig ... ✓ PASSED
+[38] Testing 038_type_conversion.zig ... ✓ PASSED
+[39] Testing 039_type_coercion.zig ... ✗ FAILED
+[40] Testing 040_pointers_advanced.zig ... ✓ PASSED
+[41] Testing 041_pointer_arithmetic.zig ... ✓ PASSED
+[42] Testing 042_multilevel_pointers.zig ... ✗ FAILED
+[43] Testing 043_sentinel.zig ... ✓ PASSED
+[44] Testing 044_c_interop.zig ... ✗ FAILED
+[45] Testing 045_extern_functions.zig ... ✗ FAILED
+[46] Testing 046_struct_methods.zig ... ✓ PASSED
+[47] Testing 047_struct_defaults.zig ... ✓ PASSED
+[48] Testing 048_anonymous_struct.zig ... ✓ PASSED
+[49] Testing 049_tuples.zig ... ✗ FAILED
+[50] Testing 050_usingnamespace.zig ... ✓ PASSED
+[51] Testing 051_interfaces.zig ... ✓ PASSED
+[52] Testing 052_anyerror.zig ... ✓ PASSED
+[53] Testing 053_errdefer.zig ... ✗ FAILED
+[54] Testing 054_unreachable.zig ... ✓ PASSED
+[55] Testing 055_defer_advanced.zig ... ✗ FAILED
+[56] Testing 056_compile_error.zig ... ✗ FAILED
+[57] Testing 057_compile_log.zig ... ✗ FAILED
+[58] Testing 058_async_basics.zig ... ✓ PASSED
+[59] Testing 059_builtins.zig ... ✓ PASSED
+[60] Testing 060_bit_operations.zig ... ✓ PASSED
+[61] Testing 061_atomic.zig ... ✗ FAILED
+[62] Testing 062_bitcast.zig ... ✗ FAILED
+[63] Testing 063_ptrcast.zig ... ✗ FAILED
+[64] Testing 064_intcast.zig ... ✗ FAILED
+[65] Testing 065_truncate.zig ... ✗ FAILED
+[66] Testing 066_float_operations.zig ... ✓ PASSED
+[67] Testing 067_saturation.zig ... ✓ PASSED
+[68] Testing 068_overflow.zig ... ✓ PASSED
+[69] Testing 069_shuffle.zig ... ✓ PASSED
+[70] Testing 070_coroutines.zig ... ✓ PASSED
+[71] Testing 071_packages.zig ... ✓ PASSED
+[72] Testing 072_modules.zig ... ✓ PASSED
+[73] Testing 073_testing.zig ... ✓ PASSED
+[74] Testing 074_test_fixtures.zig ... ✓ PASSED
+[75] Testing 075_benchmarking.zig ... ✓ PASSED
+[76] Testing 076_cmdline.zig ... ✓ PASSED
+[77] Testing 077_env_vars.zig ... ✓ PASSED
+[78] Testing 078_filesystem.zig ... ✗ FAILED
+[79] Testing 079_paths.zig ... ✗ FAILED
+[80] Testing 080_build_system.zig ... ✓ PASSED
+[81] Testing 081_project_structure.zig ... ✓ PASSED
+[82] Testing 082_build_zig.zig ... ✓ PASSED
+[83] Testing 083_dependency_management.zig ... ✗ FAILED
+[84] Testing 084_modular_code.zig ... ✓ PASSED
+[85] Testing 085_unit_tests.zig ... ✓ PASSED
+[86] Testing 086_integration_tests.zig ... ✓ PASSED
+[87] Testing 087_performance_testing.zig ... ✗ FAILED
+[88] Testing 088_arg_parsing.zig ... ✓ PASSED
+[89] Testing 089_config_management.zig ... ✓ PASSED
+[90] Testing 090_json_parsing.zig ... ✗ FAILED
+[91] Testing 091_http_client.zig ... ✓ PASSED
+[92] Testing 092_file_operations.zig ... ✓ PASSED
+[93] Testing 093_directory_ops.zig ... ✓ PASSED
+[94] Testing 094_time_date.zig ... ✓ PASSED
+[95] Testing 095_random_numbers.zig ... ✓ PASSED
+[96] Testing 096_hashing.zig ... ✓ PASSED
+[97] Testing 097_compression.zig ... ✓ PASSED
+[98] Testing 098_concurrency.zig ... ✓ PASSED
+[99] Testing 099_advanced_async.zig ... ✓ PASSED
+[100] Testing 100_final_project.zig ... ✓ PASSED
+
+=========================================
+Test Summary
+=========================================
+Total:  100
+Passed: 71
+Failed: 29
+
+Failed files:
+  - 014_error_handling.zig
+  - 015_defer_statement.zig
+  - 016_pointers.zig
+  - 017_optionals.zig
+  - 019_enums.zig
+  - 020_unions.zig
+  - 021_slices.zig
+  - 027_arraylist.zig
+  - 028_hashmap.zig
+  - 034_anytype.zig
+  - 039_type_coercion.zig
+  - 042_multilevel_pointers.zig
+  - 044_c_interop.zig
+  - 045_extern_functions.zig
+  - 049_tuples.zig
+  - 053_errdefer.zig
+  - 055_defer_advanced.zig
+  - 056_compile_error.zig
+  - 057_compile_log.zig
+  - 061_atomic.zig
+  - 062_bitcast.zig
+  - 063_ptrcast.zig
+  - 064_intcast.zig
+  - 065_truncate.zig
+  - 078_filesystem.zig
+  - 079_paths.zig
+  - 083_dependency_management.zig
+  - 087_performance_testing.zig
+  - 090_json_parsing.zig
+=========================================

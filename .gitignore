@@ -1,0 +1,42 @@
+# IDE 配置文件
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Zig 编译产物
+*.o
+*.obj
+*.exe
+*.pdb
+zig-out/
+zig-cache/
+zig-build/
+
+# C#/.Net 编译产物
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.log
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 临时文件
+*.tmp
+*.temp
+*.cache
+*.bak
+*.swp
+*~
+
+# 构建脚本输出
+nul.obj
+nul.pdb

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(zig version:*)",
+      "Bash(scoop --version)",
+      "Bash(choco --version)",
+      "Bash(winget --version)",
+      "Bash(winget search:*)",
+      "Bash(curl -s https://ziglang.org/download/)",
+      "Bash(mkdir -p /c/rock/dev-tool)",
+      "Read(//c/rock/dev-tool/**)",
+      "Bash(curl -L -o zig.zip https://ziglang.org/download/0.13.0/zig-windows-x86_64-0.13.0.zip)",
+      "Bash(unzip -q zig.zip)",
+      "Bash(setx PATH \"%PATH%;C:\\\\rock\\\\dev-tool\\\\zig\")",
+      "Bash(/c/rock/dev-tool/zig/zig.exe version:*)",
+      "Bash(/c/rock/dev-tool/zig/zig.exe run:*)",
+      "Bash(ls -1 *.zig)",
+      "Bash(chmod +x test_all_tutorials.sh)",
+      "Bash(./test_all_tutorials.sh)",
+      "Bash(/c/rock/dev-tool/zig/zig.exe build-exe:*)",
+      "Bash(for file:*)",
+      "Bash(do echo:*)",
+      "Bash(done)"
+    ]
+  }
+}
