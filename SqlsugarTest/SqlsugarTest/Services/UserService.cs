@@ -123,6 +123,18 @@ namespace SqlsugarTest.Services
             _db.Updateable(user).ExecuteCommand();
             Console.WriteLine("更新完成!\n");
         }
+        
+        public void Update2(int id, int age, string name)
+        {
+            Console.WriteLine("7.1 更新数据 by age, name");
+            Console.WriteLine(new string('=', 50));
+            _db.Updateable<User>().SetColumns(u => new User
+            {
+                Name = name,
+                Age = u.Age + age
+            }).Where(u => u.Id == id).ExecuteCommand();
+            Console.WriteLine("更新完成!\n");
+        }
 
         /// <summary>
         /// 根据条件更新用户

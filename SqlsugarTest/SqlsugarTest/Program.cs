@@ -78,6 +78,9 @@ namespace SqlsugarTest
 
             // 6. 条件查询（年龄大于28）
             userService.GetByCondition(u => u.Age > 28);
+            
+            userService.Update(new User {Age = 11, Name = "rock"});
+            userService.Update2(20, 11, "john");
 
             // 7. 更新数据（将张三的年龄改为26）
             userService.UpdateByCondition(u => u.Name == "张三", new User { Age = 26 });
