@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-目录比较工具
-比较两个目录，列出：
-1. 文件内容不同的文件
-2. 两个目录彼此没有的文件
+Directory Comparison Tool
+Compares two directories and lists:
+1. Files with different content
+2. Files that exist in only one of the two directories
 """
 
 import difflib
@@ -15,7 +15,7 @@ from typing import Dict, List, Set, Tuple
 
 
 class DirectoryComparer:
-    """目录比较器"""
+    """Directory Comparator"""
 
     def __init__(
         self,
@@ -27,15 +27,15 @@ class DirectoryComparer:
         show_diff_details: bool = False,
     ):
         """
-        初始化比较器
+        Initialize the comparator
 
         Args:
-            dir1: 第一个目录路径
-            dir2: 第二个目录路径
-            extensions: 要比较的文件扩展名列表，如 ['.cs', '.xaml']，None 表示所有文件
-            exclude_dirs: 要排除的目录名列表，如 ['obj', 'bin', 'debug']，None 表示不排除
-            ignore_case: 是否忽略大小写，默认为True
-            show_diff_details: 是否显示文件内容差异详情，默认为False
+            dir1: Path to the first directory
+            dir2: Path to the second directory
+            extensions: List of file extensions to compare, e.g. ['.cs', '.xaml'], None means all files
+            exclude_dirs: List of directory names to exclude, e.g. ['obj', 'bin', 'debug'], None means don't exclude
+            ignore_case: Whether to ignore case, default is True
+            show_diff_details: Whether to show file content difference details, default is False
         """
         self.dir1 = Path(dir1).resolve()
         self.dir2 = Path(dir2).resolve()
@@ -45,24 +45,24 @@ class DirectoryComparer:
         self.show_diff_details = show_diff_details
 
         if not self.dir1.exists():
-            raise FileNotFoundError(f"目录不存在: {self.dir1}")
+            raise FileNotFoundError(f"Directory does not exist: {self.dir1}")
         if not self.dir2.exists():
-            raise FileNotFoundError(f"目录不存在: {self.dir2}")
+            raise FileNotFoundError(f"Directory does not exist: {self.dir2}")
         if not self.dir1.is_dir():
-            raise NotADirectoryError(f"不是目录: {self.dir1}")
+            raise NotADirectoryError(f"Not a directory: {self.dir1}")
         if not self.dir2.is_dir():
-            raise NotADirectoryError(f"不是目录: {self.dir2}")
+            raise NotADirectoryError(f"Not a directory: {self.dir2}")
 
     def compare(self) -> Dict[str, List[str]]:
         """
-        比较两个目录
+        Compare two directories
 
         Returns:
-            包含比较结果的字典:
-            - 'different': 文件内容不同的文件
-            - 'only_in_dir1': 只在目录1中的文件
-            - 'only_in_dir2': 只在目录2中的文件
-            - 'common': 相同的文件
+            Dictionary containing comparison results:
+            - 'different': Files with different content
+            - 'only_in_dir1': Files only in directory 1
+            - 'only_in_dir2': Files only in directory 2
+            - 'common': Same files
         """
         result = {"different": [], "only_in_dir1": [], "only_in_dir2": [], "common": []}
 
@@ -89,8 +89,8 @@ class DirectoryComparer:
                 else:
                     result["common"].append(rel_path)
             except (OSError, PermissionError) as e:
-                print(f"⚠️  无法比较文件 {rel_path}: {e}")
-                result["different"].append(rel_path)  # 将无法比较的文件标记为不同
+                print(f"⚠️  Cannot compare file {rel_path}: {e}")
+                result["different"].append(rel_path)  # Mark files that cannot be compared as different
 
         result["different"].sort()
         result["common"].sort()
@@ -99,13 +99,13 @@ class DirectoryComparer:
 
     def _get_all_files(self, directory: Path) -> Set[str]:
         """
-        获取目录下所有文件的相对路径
+        Get relative paths of all files in a directory
 
         Args:
-            directory: 目录路径
+            directory: Directory path
 
         Returns:
-            文件相对路径的集合
+            Set of file relative paths
         """
         files = set()
         for root, dirs, filenames in os.walk(directory):
@@ -136,11 +136,11 @@ class DirectoryComparer:
 
     def _print_file_diff(self, rel_path: str, context_lines: int = 3):
         """
-        打印两个文件的详细差异
+        Print detailed differences between two files
 
         Args:
-            rel_path: 文件的相对路径
-            context_lines: 显示的上下文行数
+            rel_path: Relative path of the file
+            context_lines: Number of context lines to display
         """
         file1 = self.dir1 / rel_path
         file2 = self.dir2 / rel_path
@@ -156,15 +156,15 @@ class DirectoryComparer:
             try:
                 with open(file1, "rb") as f1, open(file2, "rb") as f2:
                     if f1.read() != f2.read():
-                        print(f"   📄 二进制文件内容不同")
+                        print(f"   📄 Binary file content differs")
                     else:
-                        print(f"   📄 二进制文件内容相同")
+                        print(f"   📄 Binary file content is the same")
                 return
             except Exception as e:
-                print(f"   ⚠️  无法读取二进制文件: {e}")
+                print(f"   ⚠️  Cannot read binary file: {e}")
                 return
         except Exception as e:
-            print(f"   ⚠️  无法读取文件: {e}")
+            print(f"   ⚠️  Cannot read file: {e}")
             return
 
         # 使用 unified_diff 显示差异
@@ -180,42 +180,42 @@ class DirectoryComparer:
         diff_lines = list(diff)
 
         if not diff_lines:
-            print(f"   ℹ️  文件可能仅有编码差异或二进制差异")
+            print(f"   ℹ️  Files may only have encoding or binary differences")
             return
 
         # 显示差异（限制输出行数，避免过长）
         max_lines = 50
         for i, line in enumerate(diff_lines):
             if i >= max_lines:
-                print(f"   ... (差异过长，已省略部分内容)")
+                print(f"   ... (diff too long, some content omitted)")
                 break
-            # 为差异行添加颜色标识
+            # Add color indicators to diff lines
             if line.startswith("---") or line.startswith("+++"):
-                print(f"   \033[90m{line}\033[0m")  # 灰色
+                print(f"   \033[90m{line}\033[0m")  # Gray
             elif line.startswith("@@"):
-                print(f"   \033[36m{line}\033[0m")  # 青色
+                print(f"   \033[36m{line}\033[0m")  # Cyan
             elif line.startswith("-"):
-                print(f"   \033[31m{line}\033[0m")  # 红色 - 删除的行
+                print(f"   \033[31m{line}\033[0m")  # Red - deleted lines
             elif line.startswith("+"):
-                print(f"   \033[32m{line}\033[0m")  # 绿色 - 添加的行
+                print(f"   \033[32m{line}\033[0m")  # Green - added lines
             else:
                 print(f"   {line}")
 
     def print_report(self):
-        """打印比较报告"""
+        """Print comparison report"""
         print(f"\n{'=' * 60}")
-        print(f"目录比较报告")
+        print(f"Directory Comparison Report")
         print(f"{'=' * 60}")
-        print(f"目录 1: {self.dir1}")
-        print(f"目录 2: {self.dir2}")
+        print(f"Directory 1: {self.dir1}")
+        print(f"Directory 2: {self.dir2}")
         if self.extensions:
-            print(f"文件类型: {', '.join(self.extensions)}")
+            print(f"File types: {', '.join(self.extensions)}")
         else:
-            print(f"文件类型: 所有文件")
+            print(f"File types: All files")
         if self.exclude_dirs:
-            print(f"排除目录: {', '.join(self.exclude_dirs)}")
-        print(f"大小写敏感: {'否' if self.ignore_case else '是'}")
-        print(f"显示差异详情: {'是' if self.show_diff_details else '否'}")
+            print(f"Excluded directories: {', '.join(self.exclude_dirs)}")
+        print(f"Case sensitive: {'No' if self.ignore_case else 'Yes'}")
+        print(f"Show diff details: {'Yes' if self.show_diff_details else 'No'}")
         print(f"{'=' * 60}\n")
 
         result = self.compare()
@@ -224,41 +224,41 @@ class DirectoryComparer:
         # 略过，在后面合并显示
 
         print(f"{'=' * 60}")
-        print(f"统计汇总:")
-        print(f"  - 只在目录1中: {len(result['only_in_dir1'])} 个文件")
-        print(f"  - 只在目录2中: {len(result['only_in_dir2'])} 个文件")
-        print(f"  - 内容不同:   {len(result['different'])} 个文件")
-        print(f"  - 内容相同:   {len(result['common'])} 个文件")
+        print(f"Summary:")
+        print(f"  - Only in directory 1: {len(result['only_in_dir1'])} files")
+        print(f"  - Only in directory 2: {len(result['only_in_dir2'])} files")
+        print(f"  - Different content:   {len(result['different'])} files")
+        print(f"  - Same content:        {len(result['common'])} files")
         print(f"{'=' * 60}\n")
 
-        # 详细列表：只在目录1中的文件
+        # Detailed list: files only in directory 1
         if result["only_in_dir1"]:
             print(f"{'=' * 60}")
-            print(f"只在目录 1 中的文件列表:")
+            print(f"Files only in directory 1:")
             print(f"{'=' * 60}")
             for file in result["only_in_dir1"]:
                 print(f"   - {file}")
             print()
 
-        # 详细列表：只在目录2中的文件
+        # Detailed list: files only in directory 2
         if result["only_in_dir2"]:
             print(f"{'=' * 60}")
-            print(f"只在目录 2 中的文件列表:")
+            print(f"Files only in directory 2:")
             print(f"{'=' * 60}")
             for file in result["only_in_dir2"]:
                 print(f"   - {file}")
             print()
 
-        # 详细差异显示（包含文件列表）
+        # Detailed difference display (including file list)
         if result["different"]:
             print(f"{'=' * 60}")
-            print(f"内容不同的文件 ({len(result['different'])} 个):")
+            print(f"Files with different content ({len(result['different'])} files):")
             print(f"{'=' * 60}")
-            # 上半部分：文件列表
+            # First part: file list
             for file in result["different"]:
                 print(f"   - {file}")
             print()
-            # 下半部分：详细差异（可选）
+            # Second part: detailed differences (optional)
             if self.show_diff_details:
                 for idx, file in enumerate(result["different"], 1):
                     width = len(str(len(result["different"])))
@@ -271,7 +271,7 @@ class DirectoryComparer:
 dir1 = r"C:\rock\coding\code\GxUniversity\zhong-yan\中烟源码\voc\2024-05-28\experiment - 气\experiment"
 dir2 = r"C:\rock\coding\code\GxUniversity\zhong-yan\GxTbMixedDataSystemV3\VOCLab"
 
-# 只比较 .cs 和 .xaml 文件，排除 obj, bin, debug 目录
+# Only compare .cs and .xaml files, exclude obj, bin, debug directories
 comparer = DirectoryComparer(
     dir1, dir2, extensions=[".cs", ".xaml"], exclude_dirs=["obj", "bin", "debug"], ignore_case=False, show_diff_details=False
 )
