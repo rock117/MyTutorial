@@ -268,8 +268,8 @@ class DirectoryComparer:
                 print(f"{'=' * 60}\n")
 
 
-dir1 = r"C:\rock\coding\code\GxUniversity\zhong-yan\中烟源码\voc\2024-05-28\experiment - 气\experiment"
-dir2 = r"C:\rock\coding\code\GxUniversity\zhong-yan\GxTbMixedDataSystemV3\VOCLab"
+dir1 = r"C:\rock\code\CnTobaco\GxTbMixedDataSystemV3\experiment"
+dir2 = r"C:\rock\code\CnTobaco\GxTbMixedDataSystemV3\VOCLab"
 
 # Only compare .cs and .xaml files, exclude obj, bin, debug directories
 comparer = DirectoryComparer(

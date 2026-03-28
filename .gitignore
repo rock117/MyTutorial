@@ -40,3 +40,4 @@ desktop.ini
 # 构建脚本输出
 nul.obj
 nul.pdb
+PyScript/__pycache__/
